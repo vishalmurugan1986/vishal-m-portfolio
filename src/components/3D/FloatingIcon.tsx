@@ -20,6 +20,22 @@ const FloatingIcon = ({ position, icon, color = "#8B5CF6", speed = 1 }: Floating
     }
   });
 
+  // Create different geometry based on icon type
+  const getGeometry = () => {
+    switch (icon) {
+      case "⚛️":
+        return <sphereGeometry args={[0.8, 16, 16]} />;
+      case "🚀":
+        return <coneGeometry args={[0.5, 1.5, 8]} />;
+      case "💻":
+        return <boxGeometry args={[1.2, 0.8, 0.1]} />;
+      case "⚡":
+        return <tetrahedronGeometry args={[0.8]} />;
+      default:
+        return <boxGeometry args={[1, 1, 1]} />;
+    }
+  };
+
   return (
     <Float
       speed={speed}
@@ -28,13 +44,15 @@ const FloatingIcon = ({ position, icon, color = "#8B5CF6", speed = 1 }: Floating
       floatingRange={[0, 1]}
     >
       <mesh ref={meshRef} position={position}>
-        <boxGeometry args={[1, 1, 1]} />
+        {getGeometry()}
         <meshStandardMaterial
           color={color}
           transparent
           opacity={0.8}
           emissive={color}
           emissiveIntensity={0.2}
+          metalness={0.3}
+          roughness={0.2}
         />
       </mesh>
     </Float>
