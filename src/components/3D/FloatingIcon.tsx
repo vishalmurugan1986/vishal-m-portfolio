@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Float, Text3D } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import { Mesh } from 'three';
 
 interface FloatingIconProps {
@@ -37,27 +37,6 @@ const FloatingIcon = ({ position, icon, color = "#8B5CF6", speed = 1 }: Floating
           emissiveIntensity={0.2}
         />
       </mesh>
-      <Text3D
-        position={[position[0], position[1] - 2, position[2]]}
-        font="/fonts/helvetiker_regular.typeface.json"
-        size={0.3}
-        height={0.05}
-        curveSegments={12}
-        bevelEnabled
-        bevelThickness={0.02}
-        bevelSize={0.02}
-        bevelOffset={0}
-        bevelSegments={5}
-      >
-        {icon}
-        <meshStandardMaterial
-          color={color}
-          transparent
-          opacity={0.9}
-          emissive={color}
-          emissiveIntensity={0.1}
-        />
-      </Text3D>
     </Float>
   );
 };
