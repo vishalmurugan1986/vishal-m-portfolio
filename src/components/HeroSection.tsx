@@ -45,43 +45,6 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <ParticleBackground id="hero-particles" variant="hero" />
-      
-      {/* Social Links - Fixed Left Side */}
-      <motion.div
-        variants={socialVariants}
-        initial="hidden"
-        animate="visible"
-        className="fixed left-8 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col gap-6"
-      >
-        <motion.a
-          href="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 glass-card hover:shadow-glow transition-all duration-300 hover:scale-110"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <Github className="w-6 h-6 text-primary" />
-        </motion.a>
-        <motion.a
-          href="https://linkedin.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 glass-card hover:shadow-cyan transition-all duration-300 hover:scale-110"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <Linkedin className="w-6 h-6 text-cyan" />
-        </motion.a>
-        <motion.a
-          href="mailto:contact@portfolio.com"
-          className="p-3 glass-card hover:shadow-accent transition-all duration-300 hover:scale-110"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <Mail className="w-6 h-6 text-accent" />
-        </motion.a>
-      </motion.div>
 
       <div className="container mx-auto px-4 z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -155,32 +118,88 @@ const HeroSection = () => {
                 </motion.a>
               </Button>
             </motion.div>
+
+            {/* Social Links - Vertical under buttons */}
+            <motion.div 
+              variants={itemVariants}
+              className="flex gap-4 justify-center lg:justify-start mt-8"
+            >
+              <motion.a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 glass-card hover:shadow-glow transition-all duration-300 hover:scale-110"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Github className="w-6 h-6 text-primary" />
+              </motion.a>
+              <motion.a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 glass-card hover:shadow-cyan transition-all duration-300 hover:scale-110"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Linkedin className="w-6 h-6 text-cyan" />
+              </motion.a>
+              <motion.a
+                href="https://leetcode.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 glass-card hover:shadow-accent transition-all duration-300 hover:scale-110"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <div className="w-6 h-6 text-accent font-bold">LC</div>
+              </motion.a>
+              <motion.a
+                href="mailto:contact@portfolio.com"
+                className="p-3 glass-card hover:shadow-accent transition-all duration-300 hover:scale-110"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Mail className="w-6 h-6 text-accent" />
+              </motion.a>
+            </motion.div>
           </motion.div>
 
-          {/* Right Column - 3D Scene */}
+          {/* Right Column - Enhanced 3D Scene */}
           <motion.div
             variants={itemVariants}
             className="h-96 lg:h-[600px] relative"
           >
             <Canvas className="w-full h-full">
-              <PerspectiveCamera makeDefault position={[0, 0, 8]} />
+              <PerspectiveCamera makeDefault position={[0, 0, 12]} />
               <Environment preset="night" />
               
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[10, 10, 5]} intensity={0.8} />
-              <pointLight position={[-10, -10, -5]} color="#8B5CF6" intensity={0.5} />
-              <pointLight position={[10, -10, -5]} color="#EC4899" intensity={0.5} />
+              {/* Enhanced Lighting */}
+              <ambientLight intensity={0.3} />
+              <directionalLight position={[10, 10, 5]} intensity={1.2} />
+              <pointLight position={[-10, -10, -5]} color="#8B5CF6" intensity={0.8} />
+              <pointLight position={[10, -10, -5]} color="#EC4899" intensity={0.8} />
+              <pointLight position={[0, 10, -5]} color="#06B6D4" intensity={0.6} />
+              <spotLight position={[0, 0, 10]} angle={0.3} penumbra={1} intensity={0.5} />
               
-              <FloatingIcon position={[0, 2, 0]} icon="⚛️" color="#61DAFB" speed={1.2} />
-              <FloatingIcon position={[-3, 0, 0]} icon="🚀" color="#8B5CF6" speed={0.8} />
-              <FloatingIcon position={[3, 0, 0]} icon="💻" color="#EC4899" speed={1.5} />
-              <FloatingIcon position={[0, -2, 0]} icon="⚡" color="#06B6D4" speed={1.0} />
+              {/* Primary floating icons */}
+              <FloatingIcon position={[0, 3, 0]} icon="⚛️" color="#61DAFB" speed={1.2} />
+              <FloatingIcon position={[-4, 1, 0]} icon="🚀" color="#8B5CF6" speed={0.8} />
+              <FloatingIcon position={[4, 1, 0]} icon="💻" color="#EC4899" speed={1.5} />
+              <FloatingIcon position={[0, -1, 0]} icon="⚡" color="#06B6D4" speed={1.0} />
+              
+              {/* Additional geometric shapes for background */}
+              <FloatingIcon position={[-6, 3, -3]} icon="⚛️" color="#8B5CF6" speed={0.6} />
+              <FloatingIcon position={[6, -2, -3]} icon="⚡" color="#EC4899" speed={0.9} />
+              <FloatingIcon position={[-2, -3, -2]} icon="💻" color="#06B6D4" speed={1.3} />
+              <FloatingIcon position={[5, 3, -4]} icon="🚀" color="#61DAFB" speed={0.7} />
+              <FloatingIcon position={[-5, -1, -5]} icon="⚛️" color="#EC4899" speed={1.1} />
               
               <OrbitControls 
                 enableZoom={false} 
                 enablePan={false}
                 autoRotate
-                autoRotateSpeed={0.5}
+                autoRotateSpeed={0.3}
               />
             </Canvas>
           </motion.div>
