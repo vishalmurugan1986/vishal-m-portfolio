@@ -29,9 +29,13 @@ const Index = () => {
   };
 
   const scrollToSection = (sectionId: string) => {
+    console.log('Scrolling to section:', sectionId); // Debug log
     const element = document.getElementById(sectionId);
     if (element) {
+      console.log('Element found:', element); // Debug log
       element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.log('Element not found for section:', sectionId); // Debug log
     }
     closeMobileMenu();
   };
@@ -121,15 +125,15 @@ const Index = () => {
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center gap-8">
                   {[
-                    { label: "Home", href: "home" },
-                    { label: "About", href: "about" },
-                    { label: "Skills", href: "skills" },
-                    { label: "Projects", href: "projects" },
-                    { label: "Contact", href: "contact" }
+                    { label: "Home", id: "home" },
+                    { label: "About", id: "about" },
+                    { label: "Skills", id: "skills" },
+                    { label: "Projects", id: "projects" },
+                    { label: "Contact", id: "contact" }
                   ].map((item, index) => (
                     <motion.button
                       key={item.label}
-                      onClick={() => scrollToSection(item.href)}
+                      onClick={() => scrollToSection(item.id)}
                       className="text-muted-foreground hover:text-primary transition-colors relative group bg-transparent border-none cursor-pointer"
                       whileHover={{ scale: 1.05 }}
                       initial={{ opacity: 0, y: -20 }}
@@ -142,9 +146,9 @@ const Index = () => {
                   ))}
                 </div>
 
-                {/* Mobile Menu Button - Always visible for testing */}
+                {/* Mobile Menu Button - ONLY visible on mobile */}
                 <motion.button
-                  className="p-2 glass-card rounded-lg"
+                  className="md:hidden p-2 glass-card rounded-lg"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={toggleMobileMenu}
@@ -158,7 +162,7 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Mobile Menu - Now visible on all devices when open */}
+            {/* Mobile Menu - ONLY visible on mobile */}
             <AnimatePresence>
               {isMobileMenuOpen && (
                 <motion.div
@@ -166,19 +170,19 @@ const Index = () => {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="border-t border-glass-border"
+                  className="md:hidden border-t border-glass-border"
                 >
                   <div className="px-4 py-4 space-y-3">
                     {[
-                      { label: "Home", href: "home" },
-                      { label: "About", href: "about" },
-                      { label: "Skills", href: "skills" },
-                      { label: "Projects", href: "projects" },
-                      { label: "Contact", href: "contact" }
+                      { label: "Home", id: "home" },
+                      { label: "About", id: "about" },
+                      { label: "Skills", id: "skills" },
+                      { label: "Projects", id: "projects" },
+                      { label: "Contact", id: "contact" }
                     ].map((item) => (
                       <motion.button
                         key={item.label}
-                        onClick={() => scrollToSection(item.href)}
+                        onClick={() => scrollToSection(item.id)}
                         className="block w-full text-left text-muted-foreground hover:text-primary transition-colors py-2 px-3 rounded-lg hover:bg-glass/50 bg-transparent border-none cursor-pointer"
                         whileHover={{ x: 5 }}
                         whileTap={{ scale: 0.95 }}
@@ -194,49 +198,25 @@ const Index = () => {
 
           {/* Main Content */}
           <main className="pt-24 sm:pt-28">
-            <section id="home">
+            <section id="home" className="min-h-screen">
               <HeroSection />
             </section>
             
-            <motion.section
-              id="about"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <section id="about" className="min-h-screen">
               <AboutSection />
-            </motion.section>
+            </section>
             
-            <motion.section
-              id="skills"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <section id="skills" className="min-h-screen">
               <SkillsSection />
-            </motion.section>
+            </section>
             
-            <motion.section
-              id="projects"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <section id="projects" className="min-h-screen">
               <ProjectsSection />
-            </motion.section>
+            </section>
             
-            <motion.section
-              id="contact"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <section id="contact" className="min-h-screen">
               <ContactSection />
-            </motion.section>
+            </section>
           </main>
 
           {/* Footer */}
@@ -279,6 +259,7 @@ const Index = () => {
                   ))}
                 </div>
                 <div className="text-sm text-muted-foreground">
+                  © 2024 Vishal Murugan. All rights reserved.
                 </div>
               </div>
             </div>
