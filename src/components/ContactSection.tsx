@@ -44,19 +44,19 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: "Location",
-      details: "San Francisco, CA",
+      details: "Chennai, Tamil Nadu, India",
       color: "accent"
     },
     {
       icon: Phone,
       title: "Phone",
-      details: "+1 (555) 123-4567",
+      details: "+91 8056424986",
       color: "cyan"
     },
     {
       icon: Mail,
       title: "Email",
-      details: "john@portfolio.com",
+      details: "vishalxivimcmlxxxvi@gmail.com",
       color: "primary"
     },
     {
@@ -174,8 +174,8 @@ const ContactSection = () => {
                   </h4>
                   <div className="flex gap-4">
                     {[
-                      { platform: "GitHub", url: "https://github.com", icon: "🐙" },
-                      { platform: "LinkedIn", url: "https://linkedin.com", icon: "💼" },
+                      { platform: "GitHub", url: "https://github.com/vishalmurugan1986", icon: "🐙" },
+                      { platform: "LinkedIn", url: "https://linkedin.com/in/vishalmurugan1986", icon: "💼" },
                       { platform: "Twitter", url: "https://twitter.com", icon: "🐦" },
                       { platform: "Instagram", url: "https://instagram.com", icon: "📸" }
                     ].map((social, index) => (
@@ -213,7 +213,7 @@ const ContactSection = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="John Doe"
+                      placeholder="xxxx"
                       required
                       className="glass-card border-primary/20 focus:border-primary"
                     />
@@ -227,7 +227,7 @@ const ContactSection = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="john@example.com"
+                      placeholder="xxxx"
                       required
                       className="glass-card border-primary/20 focus:border-primary"
                     />

@@ -60,12 +60,12 @@ const HeroSection = () => {
               <div className="text-lg text-accent font-medium">
                 Hello, I'm
               </div>
-              <h1 className="text-6xl lg:text-8xl font-bold gradient-text">
-                John Doe
-              </h1>
+              <h2 className="text-6xl lg:text-8xl font-bold gradient-text">
+                Vishal M
+              </h2>
               <div className="text-2xl lg:text-3xl text-muted-foreground">
-                <TypingAnimation 
-                  text="Full Stack Developer & UI/UX Designer"
+                <TypingAnimation
+                  text="Software Developer | MERN Stack | Generative AI Enthusiast"
                   speed={80}
                   delay={1000}
                   className="gradient-text-secondary"
@@ -77,8 +77,7 @@ const HeroSection = () => {
               variants={itemVariants}
               className="text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0"
             >
-              I create exceptional digital experiences through cutting-edge technology 
-              and innovative design solutions.
+              I specialize in building intelligent solutions with Generative AI to optimize workflows, drive automation, and create impactful user experiences.
             </motion.p>
 
             <motion.div 
@@ -125,7 +124,7 @@ const HeroSection = () => {
               className="flex gap-4 justify-center lg:justify-start mt-8"
             >
               <motion.a
-                href="https://github.com"
+                href="https://github.com/vishalmurugan1986"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 glass-card hover:shadow-glow transition-all duration-300 hover:scale-110"
@@ -135,7 +134,7 @@ const HeroSection = () => {
                 <Github className="w-6 h-6 text-primary" />
               </motion.a>
               <motion.a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/vishalmurugan1986"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 glass-card hover:shadow-cyan transition-all duration-300 hover:scale-110"
@@ -145,7 +144,7 @@ const HeroSection = () => {
                 <Linkedin className="w-6 h-6 text-cyan" />
               </motion.a>
               <motion.a
-                href="https://leetcode.com"
+                href="https://leetcode.com/vishalmurugan1986"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 glass-card hover:shadow-accent transition-all duration-300 hover:scale-110"
@@ -155,7 +154,7 @@ const HeroSection = () => {
                 <div className="w-6 h-6 text-accent font-bold">LC</div>
               </motion.a>
               <motion.a
-                href="mailto:contact@portfolio.com"
+                href="mailto:vishalxivimcmlxxxvi@gmail.com"
                 className="p-3 glass-card hover:shadow-accent transition-all duration-300 hover:scale-110"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}

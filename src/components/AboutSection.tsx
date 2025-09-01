@@ -57,19 +57,12 @@ const AboutSection = () => {
             <motion.div variants={itemVariants} className="space-y-6">
               <div className="glass-card p-8 space-y-6">
                 <h3 className="text-2xl font-bold text-foreground mb-4">
-                  Passionate Full Stack Developer
+                  Passionate Software Developer
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  I'm a dedicated full-stack developer with a passion for creating 
-                  exceptional digital experiences. My journey in web development started 
-                  3 years ago, and I've been constantly learning and evolving with the 
-                  latest technologies.
+                  I'm a passionate Software Developer specializing in the MERN stack, currently exploring the exciting world of Generative AI. I love building interactive, scalable applications and solving real-world problems through code. Open to opportunities that challenge me to innovate and grow.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  I specialize in React, Node.js, and modern web technologies. I love 
-                  turning complex problems into simple, beautiful and intuitive solutions. 
-                  When I'm not coding, you'll find me exploring new technologies or 
-                  contributing to open-source projects.
                 </p>
                 
                 {/* Skills Progress */}
@@ -77,7 +70,7 @@ const AboutSection = () => {
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span className="text-foreground">Frontend Development</span>
-                      <span className="text-accent">95%</span>
+                      <span className="text-accent">100%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <motion.div
@@ -92,7 +85,7 @@ const AboutSection = () => {
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span className="text-foreground">Backend Development</span>
-                      <span className="text-cyan">88%</span>
+                      <span className="text-cyan">100%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <motion.div
@@ -107,7 +100,7 @@ const AboutSection = () => {
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span className="text-foreground">UI/UX Design</span>
-                      <span className="text-accent">92%</span>
+                      <span className="text-accent">100%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <motion.div

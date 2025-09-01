@@ -33,13 +33,13 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with React, Node.js, and Stripe integration. Features real-time inventory, user authentication, and admin dashboard.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      category: "fullstack",
+      title: "Prime Promise",
+      description: "A lightweight promise utility library for JavaScript with modern async/await features.",
+      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop",
+      tags: ["JavaScript", "promise", "Async/Await"],
+      category: "frontend",
       demoUrl: "https://demo.example.com",
-      githubUrl: "https://github.com/example/ecommerce"
+      githubUrl: "https://github.com/vishalmurugan1986/prime-promise"
     },
     {
       id: 2,
@@ -50,46 +50,6 @@ const ProjectsSection = () => {
       category: "frontend",
       demoUrl: "https://ai-dashboard.example.com",
       githubUrl: "https://github.com/example/ai-dashboard"
-    },
-    {
-      id: 3,
-      title: "Mobile Banking App",
-      description: "React Native banking application with biometric authentication, real-time transactions, and investment tracking features.",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
-      tags: ["React Native", "TypeScript", "Firebase"],
-      category: "mobile",
-      demoUrl: "https://banking-app.example.com",
-      githubUrl: "https://github.com/example/banking-app"
-    },
-    {
-      id: 4,
-      title: "DevOps Automation Tool",
-      description: "DevOps automation platform for CI/CD pipelines, container orchestration, and infrastructure monitoring with Docker and Kubernetes.",
-      image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=600&h=400&fit=crop",
-      tags: ["Docker", "Kubernetes", "AWS", "Python"],
-      category: "backend",
-      demoUrl: "https://devops-tool.example.com",
-      githubUrl: "https://github.com/example/devops-tool"
-    },
-    {
-      id: 5,
-      title: "Social Media Analytics",
-      description: "Social media analytics platform with real-time data processing, sentiment analysis, and comprehensive reporting dashboard.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-      tags: ["Vue.js", "Node.js", "PostgreSQL", "Redis"],
-      category: "fullstack",
-      demoUrl: "https://social-analytics.example.com",
-      githubUrl: "https://github.com/example/social-analytics"
-    },
-    {
-      id: 6,
-      title: "3D Portfolio Website",
-      description: "Interactive 3D portfolio website built with Three.js, featuring immersive experiences and creative animations.",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop",
-      tags: ["Three.js", "React", "GSAP", "WebGL"],
-      category: "frontend",
-      demoUrl: "https://3d-portfolio.example.com",
-      githubUrl: "https://github.com/example/3d-portfolio"
     }
   ];
 

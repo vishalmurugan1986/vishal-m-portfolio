@@ -55,7 +55,7 @@ const Index = () => {
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          John Doe
+          Vishal Murugan
         </motion.h1>
         <motion.p
           className="text-muted-foreground mt-2"
@@ -96,7 +96,7 @@ const Index = () => {
                   className="text-2xl font-bold gradient-text"
                   whileHover={{ scale: 1.05 }}
                 >
-                  John Doe
+                  Vishal Murugan
                 </motion.div>
                 
                 <div className="hidden md:flex items-center gap-8">
@@ -197,15 +197,15 @@ const Index = () => {
                   className="text-2xl font-bold gradient-text mb-4"
                   whileHover={{ scale: 1.05 }}
                 >
-                  John Doe
+                  Vishal Murugan
                 </motion.div>
                 <p className="text-muted-foreground mb-6">
-                  Full Stack Developer & UI/UX Designer
+                  Software Developer
                 </p>
                 <div className="flex justify-center gap-6 mb-8">
                   {[
-                    { platform: "GitHub", url: "https://github.com" },
-                    { platform: "LinkedIn", url: "https://linkedin.com" },
+                    { platform: "GitHub", url: "https://github.com/vishalmurugan1986" },
+                    { platform: "LinkedIn", url: "https://linkedin.com/in/vishalmurugan1986" },
                     { platform: "Twitter", url: "https://twitter.com" },
                     { platform: "Instagram", url: "https://instagram.com" }
                   ].map((social, index) => (
@@ -223,7 +223,6 @@ const Index = () => {
                   ))}
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  © 2024 John Doe. All rights reserved. Built with ❤️ using React & Framer Motion
                 </div>
               </div>
             </div>
