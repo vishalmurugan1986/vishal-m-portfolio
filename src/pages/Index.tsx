@@ -28,6 +28,14 @@ const Index = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    closeMobileMenu();
+  };
+
   const pageVariants = {
     initial: { opacity: 0 },
     in: { opacity: 1 },
@@ -103,8 +111,9 @@ const Index = () => {
             <div className="container mx-auto px-4 sm:px-6 py-4">
               <div className="flex items-center justify-between">
                 <motion.div
-                  className="text-xl sm:text-2xl font-bold gradient-text"
+                  className="text-xl sm:text-2xl font-bold gradient-text cursor-pointer"
                   whileHover={{ scale: 1.05 }}
+                  onClick={() => scrollToSection('home')}
                 >
                   Vishal Murugan
                 </motion.div>
@@ -112,16 +121,16 @@ const Index = () => {
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center gap-8">
                   {[
-                    { label: "Home", href: "#home" },
-                    { label: "About", href: "#about" },
-                    { label: "Skills", href: "#skills" },
-                    { label: "Projects", href: "#projects" },
-                    { label: "Contact", href: "#contact" }
+                    { label: "Home", href: "home" },
+                    { label: "About", href: "about" },
+                    { label: "Skills", href: "skills" },
+                    { label: "Projects", href: "projects" },
+                    { label: "Contact", href: "contact" }
                   ].map((item, index) => (
-                    <motion.a
+                    <motion.button
                       key={item.label}
-                      href={item.href}
-                      className="text-muted-foreground hover:text-primary transition-colors relative group"
+                      onClick={() => scrollToSection(item.href)}
+                      className="text-muted-foreground hover:text-primary transition-colors relative group bg-transparent border-none cursor-pointer"
                       whileHover={{ scale: 1.05 }}
                       initial={{ opacity: 0, y: -20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -129,13 +138,13 @@ const Index = () => {
                     >
                       {item.label}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-                    </motion.a>
+                    </motion.button>
                   ))}
                 </div>
 
-                {/* Mobile Menu Button */}
+                {/* Mobile Menu Button - Always visible for testing */}
                 <motion.button
-                  className="md:hidden p-2 glass-card rounded-lg"
+                  className="p-2 glass-card rounded-lg"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={toggleMobileMenu}
@@ -149,7 +158,7 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu - Now visible on all devices when open */}
             <AnimatePresence>
               {isMobileMenuOpen && (
                 <motion.div
@@ -157,26 +166,25 @@ const Index = () => {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="md:hidden border-t border-glass-border"
+                  className="border-t border-glass-border"
                 >
                   <div className="px-4 py-4 space-y-3">
                     {[
-                      { label: "Home", href: "#home" },
-                      { label: "About", href: "#about" },
-                      { label: "Skills", href: "#skills" },
-                      { label: "Projects", href: "#projects" },
-                      { label: "Contact", href: "#contact" }
+                      { label: "Home", href: "home" },
+                      { label: "About", href: "about" },
+                      { label: "Skills", href: "skills" },
+                      { label: "Projects", href: "projects" },
+                      { label: "Contact", href: "contact" }
                     ].map((item) => (
-                      <motion.a
+                      <motion.button
                         key={item.label}
-                        href={item.href}
-                        className="block text-muted-foreground hover:text-primary transition-colors py-2 px-3 rounded-lg hover:bg-glass/50"
-                        onClick={closeMobileMenu}
+                        onClick={() => scrollToSection(item.href)}
+                        className="block w-full text-left text-muted-foreground hover:text-primary transition-colors py-2 px-3 rounded-lg hover:bg-glass/50 bg-transparent border-none cursor-pointer"
                         whileHover={{ x: 5 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         {item.label}
-                      </motion.a>
+                      </motion.button>
                     ))}
                   </div>
                 </motion.div>
