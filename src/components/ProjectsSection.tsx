@@ -40,17 +40,8 @@ const ProjectsSection = () => {
       category: "frontend",
       demoUrl: "https://demo.example.com",
       githubUrl: "https://github.com/vishalmurugan1986/prime-promise"
-    },
-    {
-      id: 2,
-      title: "AI Dashboard",
-      description: "Modern dashboard with AI-powered analytics, data visualization, and machine learning insights. Built with Next.js and Python backend.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      tags: ["Next.js", "Python", "TensorFlow", "D3.js"],
-      category: "frontend",
-      demoUrl: "https://ai-dashboard.example.com",
-      githubUrl: "https://github.com/example/ai-dashboard"
     }
+
   ];
 
   const filters = [

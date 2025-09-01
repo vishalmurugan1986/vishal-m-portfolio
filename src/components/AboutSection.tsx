@@ -28,10 +28,10 @@ const AboutSection = () => {
   };
 
   const stats = [
-    { number: "50+", label: "Projects Completed", icon: Code },
-    { number: "3+", label: "Years Experience", icon: Rocket },
-    { number: "25+", label: "Happy Clients", icon: Users },
-    { number: "10+", label: "Technologies", icon: Palette }
+    { number: "10+", label: "Projects Completed", icon: Code },
+    { number: "1+", label: "Years Experience", icon: Rocket },
+    { number: "20+", label: "Happy Clients", icon: Users },
+    { number: "5+", label: "Technologies", icon: Palette }
   ];
 
   return (
@@ -70,7 +70,7 @@ const AboutSection = () => {
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span className="text-foreground">Frontend Development</span>
-                      <span className="text-accent">100%</span>
+                      <span className="text-accent">50%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <motion.div
@@ -85,7 +85,7 @@ const AboutSection = () => {
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span className="text-foreground">Backend Development</span>
-                      <span className="text-cyan">100%</span>
+                      <span className="text-cyan">50%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <motion.div
@@ -100,7 +100,7 @@ const AboutSection = () => {
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span className="text-foreground">UI/UX Design</span>
-                      <span className="text-accent">100%</span>
+                      <span className="text-accent">20%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <motion.div

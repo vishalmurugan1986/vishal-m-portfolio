@@ -32,39 +32,38 @@ const skillCategories = [
       title: "Programming",
       color: "cyan",
       skills: [
-        { name: "Java", level: 100, icon: "☕" },
-        { name: "JavaScript", level: 95, icon: "🟨" },
-        { name: "Python", level: 85, icon: "🐍" },
-        { name: "HTML", level: 90, icon: "🌐" },
-        { name: "CSS", level: 85, icon: "🎨" },
-        { name: "SQL", level: 80, icon: "🗄" }
+        { name: "Java", level: 50, icon: "☕" },
+        { name: "JavaScript", level: 70, icon: "🟨" },
+        { name: "Python", level: 50, icon: "🐍" },
+        { name: "HTML", level: 80, icon: "🌐" },
+        { name: "CSS", level: 80, icon: "🎨" },
+        { name: "SQL", level: 50, icon: "🗄" }
       ]
     },
     {
       title: "Frontend",
       color: "cyan",
       skills: [
-        { name: "React", level: 95, icon: "⚛" },
-        { name: "Next.js", level: 88, icon: "▲" },
-        { name: "Tailwind CSS", level: 95, icon: "🎨" }
+        { name: "React", level: 50, icon: "⚛" },
+        { name: "Tailwind CSS", level: 50, icon: "🌬" }
       ]
     },
     {
       title: "Backend",
       color: "cyan",
       skills: [
-        { name: "Node.js", level: 90, icon: "🟢" },
-        { name: "Express.js", level: 88, icon: "🚄" },
-        { name: "MongoDB", level: 80, icon: "🍃" }
+        { name: "Node.js", level: 50, icon: "🟢" },
+        { name: "Express.js", level: 50, icon: "🚄" },
+        { name: "MongoDB", level: 50, icon: "🍃" }
       ]
     },
     {
       title: "Tools & Others",
       color: "cyan",
       skills: [
-        { name: "Git", level: 95, icon: "📝" },
-        { name: "Vercel", level: 90, icon: "⬆" },
-        { name: "AWS", level: 75, icon: "☁" } 
+        { name: "Git", level: 80, icon: "📝" },
+        { name: "GitHub", level: 80, icon: "🐙" },
+        { name: "Vercel", level: 40, icon: "⬆" }
       ]
     }
   ];
