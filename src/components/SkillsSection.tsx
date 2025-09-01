@@ -27,17 +27,26 @@ const SkillsSection = () => {
     }
   };
 
-  const skillCategories = [
+const skillCategories = [
+    {
+      title: "Programming",
+      color: "cyan",
+      skills: [
+        { name: "Java", level: 100, icon: "☕" },
+        { name: "JavaScript", level: 95, icon: "🟨" },
+        { name: "Python", level: 85, icon: "🐍" },
+        { name: "HTML", level: 90, icon: "🌐" },
+        { name: "CSS", level: 85, icon: "🎨" },
+        { name: "SQL", level: 80, icon: "🗄" }
+      ]
+    },
     {
       title: "Frontend",
-      color: "accent",
+      color: "cyan",
       skills: [
-        { name: "React", level: 95, icon: "⚛️" },
-        { name: "TypeScript", level: 90, icon: "📘" },
+        { name: "React", level: 95, icon: "⚛" },
         { name: "Next.js", level: 88, icon: "▲" },
-        { name: "Tailwind CSS", level: 95, icon: "🎨" },
-        { name: "Framer Motion", level: 85, icon: "🎭" },
-        { name: "Three.js", level: 75, icon: "🎯" }
+        { name: "Tailwind CSS", level: 95, icon: "🎨" }
       ]
     },
     {
@@ -45,23 +54,17 @@ const SkillsSection = () => {
       color: "cyan",
       skills: [
         { name: "Node.js", level: 90, icon: "🟢" },
-        { name: "Express", level: 88, icon: "🚄" },
-        { name: "Python", level: 85, icon: "🐍" },
-        { name: "PostgreSQL", level: 82, icon: "🐘" },
-        { name: "MongoDB", level: 80, icon: "🍃" },
-        { name: "Redis", level: 75, icon: "🔴" }
+        { name: "Express.js", level: 88, icon: "🚄" },
+        { name: "MongoDB", level: 80, icon: "🍃" }
       ]
     },
     {
       title: "Tools & Others",
-      color: "primary",
+      color: "cyan",
       skills: [
         { name: "Git", level: 95, icon: "📝" },
-        { name: "Docker", level: 80, icon: "🐳" },
-        { name: "AWS", level: 75, icon: "☁️" },
-        { name: "Figma", level: 90, icon: "🎨" },
-        { name: "Jest", level: 85, icon: "🧪" },
-        { name: "GraphQL", level: 78, icon: "📊" }
+        { name: "Vercel", level: 90, icon: "⬆" },
+        { name: "AWS", level: 75, icon: "☁" } 
       ]
     }
   ];
