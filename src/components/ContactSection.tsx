@@ -99,17 +99,8 @@ const ContactSection = () => {
     }
   };
 
-  const getShadowClass = (color: string) => {
-    switch (color) {
-      case 'accent': return 'hover:shadow-accent';
-      case 'cyan': return 'hover:shadow-cyan';
-      case 'primary': return 'hover:shadow-glow';
-      default: return 'hover:shadow-glow';
-    }
-  };
-
   return (
-    <section id="contact" className="py-20 relative">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 relative">
       <ParticleBackground id="contact-particles" variant="contact" />
       
       <div className="container mx-auto px-4">
@@ -121,153 +112,91 @@ const ContactSection = () => {
           className="max-w-7xl mx-auto"
         >
           {/* Section Title */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-5xl lg:text-6xl font-bold gradient-text mb-6">
+          <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold gradient-text mb-4 sm:mb-6">
               Get In Touch
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ready to turn your ideas into reality? Let's discuss your next project
+            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
+              Ready to start a conversation? Let's discuss your project or just say hello!
             </p>
-            <div className="w-24 h-1 bg-gradient-secondary mx-auto mt-6"></div>
+            <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-primary mx-auto mt-4 sm:mt-6"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Information */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div className="glass-card p-8">
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Let's Connect
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
+            {/* Left Column - Contact Form */}
+            <motion.div variants={itemVariants} className="space-y-6">
+              <div className="glass-card p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6">
+                  Send a Message
                 </h3>
-                <p className="text-muted-foreground mb-8 leading-relaxed">
-                  I'm always interested in hearing about new opportunities, 
-                  creative projects, and innovative ideas. Whether you're a 
-                  company looking to hire, or you're a fellow developer who 
-                  wants to connect, I'd love to hear from you.
-                </p>
-
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <motion.div
-                      key={index}
-                      className={`flex items-center gap-4 p-4 rounded-xl bg-muted/20 ${getShadowClass(info.color)} transition-all duration-300 hover:scale-105`}
-                      whileHover={{ x: 10 }}
-                    >
-                      <div className={`p-3 bg-gradient-primary rounded-lg ${getShadowClass(info.color)}`}>
-                        <info.icon className={`w-6 h-6 text-white`} />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-foreground">
-                          {info.title}
-                        </div>
-                        <div className="text-muted-foreground">
-                          {info.details}
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Social Links */}
-                <div className="mt-8 pt-8 border-t border-border">
-                  <h4 className="text-lg font-semibold text-foreground mb-4">
-                    Follow Me
-                  </h4>
-                  <div className="flex gap-4">
-                    {[
-                      { platform: "GitHub", url: "https://github.com/vishalmurugan1986", icon: "🐙" },
-                      { platform: "LinkedIn", url: "https://linkedin.com/in/vishalmurugan1986", icon: "💼" },
-                      { platform: "Twitter", url: "https://twitter.com", icon: "🐦" },
-                      { platform: "Instagram", url: "https://instagram.com", icon: "📸" }
-                    ].map((social, index) => (
-                      <motion.a
-                        key={index}
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 glass-card hover:shadow-glow transition-all duration-300 text-center"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <span className="text-2xl">{social.icon}</span>
-                      </motion.a>
-                    ))}
+                
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-sm font-medium text-foreground">
+                        Name *
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Your name"
+                        className="glass-card border-glass-border focus:border-primary"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-medium text-foreground">
+                        Email *
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="your.email@example.com"
+                        className="glass-card border-glass-border focus:border-primary"
+                      />
+                    </div>
                   </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div variants={itemVariants}>
-              <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Send Message
-                </h3>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Your Name
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="subject" className="text-sm font-medium text-foreground">
+                      Subject *
                     </label>
                     <Input
+                      id="subject"
+                      name="subject"
                       type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="xxxx"
                       required
-                      className="glass-card border-primary/20 focus:border-primary"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      placeholder="What's this about?"
+                      className="glass-card border-glass-border focus:border-primary"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Email Address
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-medium text-foreground">
+                      Message *
                     </label>
-                    <Input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="xxxx"
+                    <Textarea
+                      id="message"
+                      name="message"
                       required
-                      className="glass-card border-primary/20 focus:border-primary"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell me more about your project..."
+                      rows={5}
+                      className="glass-card border-glass-border focus:border-primary resize-none"
                     />
                   </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Subject
-                  </label>
-                  <Input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    placeholder="Project Discussion"
-                    required
-                    className="glass-card border-primary/20 focus:border-primary"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Message
-                  </label>
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Tell me about your project..."
-                    rows={6}
-                    required
-                    className="glass-card border-primary/20 focus:border-primary resize-none"
-                  />
-                </div>
-
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
+                  
                   <Button
                     type="submit"
                     variant="hero"
@@ -276,18 +205,79 @@ const ContactSection = () => {
                     className="w-full group"
                   >
                     {isSubmitting ? (
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                        className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"
-                      />
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        Sending...
+                      </div>
                     ) : (
-                      <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
+                      <>
+                        <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:translate-x-1 transition-transform" />
+                        Send Message
+                      </>
                     )}
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
-                </motion.div>
-              </form>
+                </form>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Contact Info */}
+            <motion.div variants={itemVariants} className="space-y-6">
+              <div className="glass-card p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6">
+                  Contact Information
+                </h3>
+                
+                <div className="space-y-4 sm:space-y-6">
+                  {contactInfo.map((info, index) => (
+                    <motion.div
+                      key={info.title}
+                      className="flex items-start gap-4 p-4 glass-card rounded-lg hover:shadow-glow transition-all duration-300"
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                      transition={{ delay: 0.2 + index * 0.1 }}
+                    >
+                      <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0 ${getIconColor(info.color)}`}>
+                        <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
+                      </div>
+                      
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-sm sm:text-base font-semibold text-foreground mb-1">
+                          {info.title}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-muted-foreground break-words">
+                          {info.details}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Additional Info */}
+              <div className="glass-card p-6 sm:p-8">
+                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-4">
+                  Let's Work Together
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
+                  I'm passionate about creating innovative solutions and would love to hear about your project. Whether it's a small website or a complex application, I'm here to help bring your ideas to life.
+                </p>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Quick response time</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Flexible collaboration</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-cyan rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Ongoing support</span>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </motion.div>

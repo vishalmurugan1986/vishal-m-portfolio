@@ -57,7 +57,7 @@ const ProjectsSection = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <section id="projects" className="py-20 relative">
+    <section id="projects" className="py-12 sm:py-16 lg:py-20 relative">
       <ParticleBackground id="projects-particles" variant="projects" />
       
       <div className="container mx-auto px-4">
@@ -69,28 +69,28 @@ const ProjectsSection = () => {
           className="max-w-7xl mx-auto"
         >
           {/* Section Title */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-5xl lg:text-6xl font-bold gradient-text mb-6">
+          <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold gradient-text mb-4 sm:mb-6">
               Featured Projects
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
               A showcase of my best work across different technologies and domains
             </p>
-            <div className="w-24 h-1 bg-gradient-primary mx-auto mt-6"></div>
+            <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-primary mx-auto mt-4 sm:mt-6"></div>
           </motion.div>
 
           {/* Filter Buttons */}
-          <motion.div variants={itemVariants} className="flex justify-center mb-12">
-            <div className="flex gap-2 p-2 glass-card rounded-2xl">
+          <motion.div variants={itemVariants} className="flex justify-center mb-8 sm:mb-12">
+            <div className="flex flex-wrap gap-2 p-2 glass-card rounded-2xl justify-center">
               {filters.map((filterOption) => (
                 <Button
                   key={filterOption.value}
                   variant={filter === filterOption.value ? "default" : "ghost"}
                   size="sm"
                   onClick={() => setFilter(filterOption.value)}
-                  className="transition-all duration-300"
+                  className="transition-all duration-300 text-xs sm:text-sm"
                 >
-                  {filterOption.label}
+                  {filterOption.value}
                 </Button>
               ))}
             </div>
@@ -98,94 +98,42 @@ const ProjectsSection = () => {
 
           {/* Projects Grid */}
           <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            layout
+            variants={itemVariants}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           >
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                variants={itemVariants}
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5 }}
-                className="group glass-card overflow-hidden hover:shadow-glow transition-all duration-500"
-                whileHover={{ y: -10 }}
+                className="glass-card overflow-hidden group"
+                whileHover={{ scale: 1.02, y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.3, delay: 0.1 + index * 0.1 }}
               >
                 {/* Project Image */}
-                <div className="relative overflow-hidden">
+                <div className="relative h-48 sm:h-56 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  {/* Project Links Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <motion.a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-primary/90 rounded-full hover:bg-primary transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <Eye className="w-5 h-5 text-white" />
-                    </motion.a>
-                    <motion.a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-accent/90 rounded-full hover:bg-accent transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <Github className="w-5 h-5 text-white" />
-                    </motion.a>
-                  </div>
-                </div>
-
-                {/* Project Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:gradient-text transition-all duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                    {project.description}
-                  </p>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex gap-3">
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex-1"
                       asChild
+                      className="glass-card border-white/20 text-white hover:bg-white/10"
                     >
                       <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2" />
+                        <Eye className="w-4 h-4 mr-2" />
                         Demo
                       </a>
                     </Button>
                     <Button
-                      variant="ghost"
+                      variant="outline"
                       size="sm"
-                      className="flex-1"
                       asChild
+                      className="glass-card border-white/20 text-white hover:bg-white/10"
                     >
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4 mr-2" />
@@ -194,19 +142,78 @@ const ProjectsSection = () => {
                     </Button>
                   </div>
                 </div>
+
+                {/* Project Content */}
+                <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-full border border-primary/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* View More Button */}
-          <motion.div 
+          {/* No Projects Message */}
+          {filteredProjects.length === 0 && (
+            <motion.div
+              variants={itemVariants}
+              className="text-center py-12 sm:py-16"
+            >
+              <div className="glass-card p-8 sm:p-12 max-w-md mx-auto">
+                <div className="text-6xl mb-4">🚧</div>
+                <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
+                  Projects Coming Soon
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground">
+                  I'm currently working on some exciting projects. Check back soon!
+                </p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Call to Action */}
+          <motion.div
             variants={itemVariants}
-            className="text-center mt-12"
+            className="text-center mt-12 sm:mt-16 lg:mt-20"
           >
-            <Button variant="hero" size="lg" className="group">
-              View All Projects
-              <ExternalLink className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <div className="glass-card p-6 sm:p-8 max-w-2xl mx-auto">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold gradient-text mb-4 sm:mb-6">
+                Have a Project in Mind?
+              </h3>
+              <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-6">
+                I'm always interested in hearing about new project opportunities. Let's discuss how we can work together!
+              </p>
+              <Button
+                variant="hero"
+                size="lg"
+                asChild
+                className="group"
+              >
+                <motion.a
+                  href="#contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get In Touch
+                  <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </motion.a>
+              </Button>
+            </div>
           </motion.div>
         </motion.div>
       </div>

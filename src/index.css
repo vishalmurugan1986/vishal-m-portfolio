@@ -82,6 +82,52 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Mobile-specific improvements */
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px; /* Slightly smaller base font for mobile */
+    }
+    
+    /* Improve touch targets */
+    button, a, input, textarea {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Better mobile scrolling */
+    .overflow-auto, .overflow-scroll {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Prevent horizontal scroll on mobile */
+    body {
+      overflow-x: hidden;
+    }
+  }
+
+  /* Touch device optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    /* Disable hover effects on touch devices */
+    .hover\:scale-105:hover,
+    .hover\:scale-110:hover,
+    .hover\:shadow-glow:hover,
+    .hover\:shadow-accent:hover,
+    .hover\:shadow-cyan:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    
+    /* Add active states for touch */
+    .active\:scale-95:active {
+      transform: scale(0.95);
+    }
+    
+    /* Improve button feedback on touch */
+    button:active {
+      transform: scale(0.98);
+    }
+  }
 }
 
 @layer components {
@@ -146,5 +192,107 @@
     height: 100%;
     pointer-events: none;
     z-index: -1;
+  }
+
+  /* Mobile-specific component styles */
+  @media (max-width: 768px) {
+    /* Improve mobile navigation */
+    .mobile-nav {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    
+    /* Better mobile form inputs */
+    .mobile-form input,
+    .mobile-form textarea {
+      font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    /* Mobile-friendly buttons */
+    .mobile-button {
+      padding: 12px 24px;
+      border-radius: 12px;
+    }
+    
+    /* Mobile card spacing */
+    .mobile-card {
+      margin: 8px;
+      padding: 16px;
+    }
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+  
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+  
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+  
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl;
+  }
+  
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl;
+  }
+  
+  .text-responsive-2xl {
+    @apply text-2xl sm:text-3xl lg:text-4xl;
+  }
+  
+  .text-responsive-3xl {
+    @apply text-3xl sm:text-4xl lg:text-5xl;
+  }
+  
+  .text-responsive-4xl {
+    @apply text-4xl sm:text-5xl lg:text-6xl;
+  }
+  
+  .text-responsive-5xl {
+    @apply text-5xl sm:text-6xl lg:text-7xl;
+  }
+  
+  .text-responsive-6xl {
+    @apply text-6xl sm:text-7xl lg:text-8xl;
+  }
+
+  /* Responsive spacing utilities */
+  .space-responsive-sm {
+    @apply space-y-2 sm:space-y-3;
+  }
+  
+  .space-responsive-md {
+    @apply space-y-3 sm:space-y-4;
+  }
+  
+  .space-responsive-lg {
+    @apply space-y-4 sm:space-y-6;
+  }
+  
+  .space-responsive-xl {
+    @apply space-y-6 sm:space-y-8;
+  }
+
+  /* Mobile-first grid utilities */
+  .grid-mobile {
+    @apply grid gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  .grid-mobile-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  .grid-mobile-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  .grid-mobile-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8;
   }
 }

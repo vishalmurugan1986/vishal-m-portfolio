@@ -35,7 +35,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 relative">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -45,30 +45,30 @@ const AboutSection = () => {
           className="max-w-6xl mx-auto"
         >
           {/* Section Title */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-5xl lg:text-6xl font-bold gradient-text mb-6">
+          <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold gradient-text mb-4 sm:mb-6">
               About Me
             </h2>
-            <div className="w-24 h-1 bg-gradient-primary mx-auto"></div>
+            <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-primary mx-auto"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left Column - Content */}
-            <motion.div variants={itemVariants} className="space-y-6">
-              <div className="glass-card p-8 space-y-6">
-                <h3 className="text-2xl font-bold text-foreground mb-4">
+            <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6">
+              <div className="glass-card p-6 sm:p-8 space-y-4 sm:space-y-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">
                   Passionate Software Developer
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   I'm a passionate Software Developer specializing in the MERN stack, currently exploring the exciting world of Generative AI. I love building interactive, scalable applications and solving real-world problems through code. Open to opportunities that challenge me to innovate and grow.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 </p>
                 
                 {/* Skills Progress */}
-                <div className="space-y-4 pt-4">
+                <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
                   <div>
-                    <div className="flex justify-between text-sm mb-2">
+                    <div className="flex justify-between text-xs sm:text-sm mb-2">
                       <span className="text-foreground">Frontend Development</span>
                       <span className="text-accent">50%</span>
                     </div>
@@ -83,7 +83,7 @@ const AboutSection = () => {
                   </div>
                   
                   <div>
-                    <div className="flex justify-between text-sm mb-2">
+                    <div className="flex justify-between text-xs sm:text-sm mb-2">
                       <span className="text-foreground">Backend Development</span>
                       <span className="text-cyan">50%</span>
                     </div>
@@ -98,16 +98,31 @@ const AboutSection = () => {
                   </div>
                   
                   <div>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span className="text-foreground">UI/UX Design</span>
-                      <span className="text-accent">20%</span>
+                    <div className="flex justify-between text-xs sm:text-sm mb-2">
+                      <span className="text-foreground">Problem Solving</span>
+                      <span className="text-accent">85%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <motion.div
                         className="bg-gradient-primary h-2 rounded-full"
                         initial={{ width: 0 }}
-                        animate={isInView ? { width: "92%" } : { width: 0 }}
+                        animate={isInView ? { width: "85%" } : { width: 0 }}
                         transition={{ duration: 1.5, delay: 0.9 }}
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <div className="flex justify-between text-xs sm:text-sm mb-2">
+                      <span className="text-foreground">Team Collaboration</span>
+                      <span className="text-cyan">90%</span>
+                    </div>
+                    <div className="w-full bg-muted rounded-full h-2">
+                      <motion.div
+                        className="bg-gradient-secondary h-2 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={isInView ? { width: "90%" } : { width: 0 }}
+                        transition={{ duration: 1.5, delay: 1.1 }}
                       />
                     </div>
                   </div>
@@ -115,36 +130,46 @@ const AboutSection = () => {
               </div>
             </motion.div>
 
-            {/* Right Column - Stats */}
-            <motion.div variants={itemVariants} className="grid grid-cols-2 gap-6">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="glass-card p-6 text-center hover:shadow-glow transition-all duration-300 group"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-full mb-4 group-hover:shadow-glow transition-all duration-300">
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </div>
+            {/* Right Column - Stats Grid */}
+            <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                {stats.map((stat, index) => (
                   <motion.div
-                    className="text-3xl font-bold gradient-text mb-2"
-                    initial={{ scale: 0 }}
-                    animate={isInView ? { scale: 1 } : { scale: 0 }}
-                    transition={{ 
-                      duration: 0.5, 
-                      delay: index * 0.1 + 1,
-                      type: "spring",
-                      stiffness: 200
-                    }}
+                    key={stat.label}
+                    className="glass-card p-4 sm:p-6 text-center space-y-3"
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.3, delay: 0.2 + index * 0.1 }}
                   >
-                    {stat.number}
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-gradient-primary rounded-full flex items-center justify-center">
+                      <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground" />
+                    </div>
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold gradient-text">
+                      {stat.number}
+                    </div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">
+                      {stat.label}
+                    </div>
                   </motion.div>
-                  <div className="text-muted-foreground text-sm font-medium">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
+                ))}
+              </div>
+              
+              {/* Additional Info Card */}
+                             <motion.div
+                 className="glass-card p-4 sm:p-6 space-y-3 sm:space-y-4"
+                 whileHover={{ scale: 1.02 }}
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                 transition={{ duration: 0.3, delay: 0.6 }}
+               >
+                <h4 className="text-lg sm:text-xl font-semibold text-foreground">
+                  What I'm Looking For
+                </h4>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  I'm seeking opportunities to work on challenging projects that involve cutting-edge technologies, particularly in the realm of Generative AI and full-stack development. I'm excited to collaborate with teams that value innovation and continuous learning.
+                </p>
+              </motion.div>
             </motion.div>
           </div>
         </motion.div>
