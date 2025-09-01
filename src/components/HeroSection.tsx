@@ -6,11 +6,10 @@ import { Download, ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import FloatingIcon from './3D/FloatingIcon';
 import TypingAnimation from './TypingAnimation';
 import ParticleBackground from './ParticleBackground';
-import useMobile from '@/hooks/use-mobile';
 
 const HeroSection = () => {
-  const { isMobile, isTablet } = useMobile();
-  const shouldShow3D = !isMobile && !isTablet; // Hide 3D on mobile/tablet for better performance
+  // Simple mobile detection - show 3D on screens wider than 768px
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -51,14 +50,14 @@ const HeroSection = () => {
       <ParticleBackground id="hero-particles" variant="hero" />
 
       <div className="container mx-auto z-10">
-        <div className={`grid ${shouldShow3D ? 'lg:grid-cols-2' : 'grid-cols-1'} gap-8 lg:gap-12 items-center`}>
+        <div className={`grid ${!isMobile ? 'lg:grid-cols-2' : 'grid-cols-1'} gap-8 lg:gap-12 items-center`}>
           
           {/* Left Column - Text Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className={`text-center ${shouldShow3D ? 'lg:text-left' : 'text-center'} space-y-6 lg:space-y-8 ${shouldShow3D ? 'order-2 lg:order-1' : 'order-1'}`}
+            className={`text-center ${!isMobile ? 'lg:text-left' : 'text-center'} space-y-6 lg:space-y-8 ${!isMobile ? 'order-2 lg:order-1' : 'order-1'}`}
           >
             <motion.div variants={itemVariants} className="space-y-3 lg:space-y-4">
               <div className="text-base sm:text-lg text-accent font-medium">
@@ -79,7 +78,7 @@ const HeroSection = () => {
 
             <motion.p 
               variants={itemVariants}
-              className={`text-base sm:text-lg text-muted-foreground max-w-lg ${shouldShow3D ? 'mx-auto lg:mx-0' : 'mx-auto'} leading-relaxed`}
+              className={`text-base sm:text-lg text-muted-foreground max-w-lg ${!isMobile ? 'mx-auto lg:mx-0' : 'mx-auto'} leading-relaxed`}
             >
               I specialize in building intelligent solutions with Generative AI to optimize workflows, drive automation, and create impactful user experiences.
             </motion.p>
@@ -169,7 +168,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Right Column - Enhanced 3D Scene (Hidden on Mobile) */}
-          {shouldShow3D && (
+          {!isMobile && (
             <motion.div
               variants={itemVariants}
               className="h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] relative order-1 lg:order-2"
@@ -210,7 +209,7 @@ const HeroSection = () => {
           )}
 
           {/* Mobile Alternative - Static Icon Grid */}
-          {!shouldShow3D && (
+          {isMobile && (
             <motion.div
               variants={itemVariants}
               className="flex justify-center items-center order-2"

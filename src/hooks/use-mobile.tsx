@@ -37,7 +37,7 @@ const useMobile = (): MobileInfo => {
       else if (width < 1536) screenSize = 'xl';
       else screenSize = '2xl';
 
-      // Device type detection
+      // Device type detection - More accurate detection
       const isMobile = width < 768;
       const isTablet = width >= 768 && width < 1024;
       const isDesktop = width >= 1024;
