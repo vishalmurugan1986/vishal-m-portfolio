@@ -3,13 +3,25 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment, PerspectiveCamera } from '@react-three/drei';
 import { Button } from '@/components/ui/button';
 import { Download, ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import FloatingIcon from './3D/FloatingIcon';
 import TypingAnimation from './TypingAnimation';
 import ParticleBackground from './ParticleBackground';
 
 const HeroSection = () => {
   // Simple mobile detection - show 3D on screens wider than 768px
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,7 +78,7 @@ const HeroSection = () => {
               <h2 className="text-4xl sm:text-6xl lg:text-8xl font-bold gradient-text leading-tight">
                 Vishal M
               </h2>
-              <div className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-muted-foreground">
+              <div className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-muted-foreground font-medium">
                 <TypingAnimation
                   text="Software Developer | MERN Stack | Generative AI Enthusiast"
                   speed={80}

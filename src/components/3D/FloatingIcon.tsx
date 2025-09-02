@@ -46,8 +46,6 @@ const FloatingIcon = ({ position, icon, color, speed }: FloatingIconProps) => {
         color={color}
         anchorX="center"
         anchorY="middle"
-        font="/fonts/NotoSansEmoji-Regular.ttf"
-        fallbackFont="Arial"
       >
         {icon}
       </Text>
