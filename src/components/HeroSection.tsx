@@ -77,7 +77,7 @@ const HeroSection = () => {
                 Hello, I'm
               </div>
               <h2 className="text-4xl sm:text-6xl lg:text-8xl font-bold gradient-text leading-tight">
-                Vishal M
+                Vishal
               </h2>
               <div className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-muted-foreground font-medium">
                 <TypingAnimation
