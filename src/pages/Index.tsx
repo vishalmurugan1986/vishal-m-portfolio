@@ -259,7 +259,7 @@ const Index = () => {
                   ))}
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  © 2024 Vishal Murugan. All rights reserved.
+                  © 2025 Vishal Murugan. All rights reserved.
                 </div>
               </div>
             </div>

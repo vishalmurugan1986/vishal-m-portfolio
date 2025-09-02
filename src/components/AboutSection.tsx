@@ -99,8 +99,8 @@ const AboutSection = () => {
                   
                   <div>
                     <div className="flex justify-between text-xs sm:text-sm mb-2">
-                      <span className="text-foreground">Problem Solving</span>
-                      <span className="text-accent">85%</span>
+                      <span className="text-foreground">Gen AI</span>
+                      <span className="text-accent">50%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <motion.div
@@ -114,8 +114,8 @@ const AboutSection = () => {
                   
                   <div>
                     <div className="flex justify-between text-xs sm:text-sm mb-2">
-                      <span className="text-foreground">Team Collaboration</span>
-                      <span className="text-cyan">90%</span>
+                      <span className="text-foreground">Problem Solving</span>
+                      <span className="text-cyan">80%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <motion.div

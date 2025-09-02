@@ -182,8 +182,9 @@ const skillCategories = [
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {[
                   { skill: "Generative AI", status: "Learning", icon: "🤖" },
-                  { skill: "Advanced React", status: "Improving", icon: "⚛️" },
-                  { skill: "Cloud Deployment", status: "Exploring", icon: "☁️" }
+                  { skill: "Dev Frameworks", status: "Learning", icon: "🛠️" },
+                  { skill: "Problem Solving", status: "Improving", icon: "🧩" }
+
                 ].map((item, index) => (
                                       <motion.div
                       key={item.skill}
