@@ -4,7 +4,8 @@ import { OrbitControls, Environment, PerspectiveCamera } from '@react-three/drei
 import { Button } from '@/components/ui/button';
 import { Download, ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import FloatingIcon from './3D/FloatingIcon';
+import ProgrammingLogos from './3D/ProgrammingLogos';
+import DetailedProgrammingLogos from './3D/DetailedProgrammingLogos';
 import TypingAnimation from './TypingAnimation';
 import ParticleBackground from './ParticleBackground';
 
@@ -197,18 +198,17 @@ const HeroSection = () => {
                 <pointLight position={[0, 10, -5]} color="#06B6D4" intensity={0.6} />
                 <spotLight position={[0, 0, 10]} angle={0.3} penumbra={1} intensity={0.5} />
                 
-                {/* Primary floating icons */}
-                <FloatingIcon position={[0, 3, 0]} icon="⚛️" color="#61DAFB" speed={1.2} />
-                <FloatingIcon position={[-4, 1, 0]} icon="🚀" color="#8B5CF6" speed={0.8} />
-                <FloatingIcon position={[4, 1, 0]} icon="💻" color="#EC4899" speed={1.5} />
-                <FloatingIcon position={[0, -1, 0]} icon="⚡" color="#06B6D4" speed={1.0} />
+                {/* Main 3D Programming Language Logos */}
+                <DetailedProgrammingLogos position={[0, 0, 0]} logoType="react" scale={1.2} />
+                <DetailedProgrammingLogos position={[-3, 0, 0]} logoType="javascript" scale={1.0} />
+                <DetailedProgrammingLogos position={[3, 0, 0]} logoType="python" scale={1.0} />
                 
-                {/* Additional geometric shapes for background */}
-                <FloatingIcon position={[-6, 3, -3]} icon="⚛️" color="#8B5CF6" speed={0.6} />
-                <FloatingIcon position={[6, -2, -3]} icon="⚡" color="#EC4899" speed={0.9} />
-                <FloatingIcon position={[-2, -3, -2]} icon="💻" color="#06B6D4" speed={1.3} />
-                <FloatingIcon position={[5, 3, -4]} icon="🚀" color="#61DAFB" speed={0.7} />
-                <FloatingIcon position={[-5, -1, -5]} icon="⚛️" color="#EC4899" speed={1.1} />
+                {/* Background accent programming logos */}
+                <ProgrammingLogos position={[-5, 1, -2]} logoType="java" scale={0.8} />
+                <ProgrammingLogos position={[5, -1, -2]} logoType="nodejs" scale={0.8} />
+                <ProgrammingLogos position={[0, 2, -3]} logoType="html" scale={0.7} />
+                <ProgrammingLogos position={[-2, -2, -2]} logoType="css" scale={0.7} />
+                <ProgrammingLogos position={[2, 2, -2]} logoType="sql" scale={0.7} />
                 
                 <OrbitControls 
                   enableZoom={false} 
@@ -220,38 +220,33 @@ const HeroSection = () => {
             </motion.div>
           )}
 
-          {/* Mobile Alternative - Static Icon Grid */}
+          {/* Mobile Alternative - 3D Scene */}
           {isMobile && (
             <motion.div
               variants={itemVariants}
-              className="flex justify-center items-center order-2"
+              className="h-64 sm:h-80 relative order-2"
             >
-              <div className="grid grid-cols-2 gap-6 sm:gap-8">
-                {[
-                  { icon: "⚛️", color: "#61DAFB" },
-                  { icon: "🚀", color: "#8B5CF6" },
-                  { icon: "💻", color: "#EC4899" },
-                  { icon: "⚡", color: "#06B6D4" }
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="w-16 h-16 sm:w-20 sm:h-20 glass-card rounded-full flex items-center justify-center text-2xl sm:text-3xl"
-                    style={{ color: item.color }}
-                    animate={{
-                      y: [0, -10, 0],
-                      scale: [1, 1.1, 1]
-                    }}
-                    transition={{
-                      duration: 3,
-                      delay: index * 0.2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    {item.icon}
-                  </motion.div>
-                ))}
-              </div>
+              <Canvas className="w-full h-full">
+                <PerspectiveCamera makeDefault position={[0, 0, 8]} />
+                <Environment preset="night" />
+                
+                {/* Simplified lighting for mobile */}
+                <ambientLight intensity={0.4} />
+                <directionalLight position={[5, 5, 5]} intensity={0.8} />
+                <pointLight position={[0, 0, 5]} color="#8B5CF6" intensity={0.6} />
+                
+                {/* Simplified 3D programming logos for mobile */}
+                <DetailedProgrammingLogos position={[0, 0, 0]} logoType="react" scale={1.0} />
+                <ProgrammingLogos position={[-2, 0, 0]} logoType="javascript" scale={0.8} />
+                <ProgrammingLogos position={[2, 0, 0]} logoType="python" scale={0.8} />
+                
+                <OrbitControls 
+                  enableZoom={false} 
+                  enablePan={false}
+                  autoRotate
+                  autoRotateSpeed={0.2}
+                />
+              </Canvas>
             </motion.div>
           )}
         </div>
