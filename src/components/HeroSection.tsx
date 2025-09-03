@@ -6,6 +6,7 @@ import { Download, ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import ProgrammingLogos from './3D/ProgrammingLogos';
 import DetailedProgrammingLogos from './3D/DetailedProgrammingLogos';
+import WebDevIcons from './3D/WebDevIcons';
 import TypingAnimation from './TypingAnimation';
 import ParticleBackground from './ParticleBackground';
 
@@ -198,17 +199,17 @@ const HeroSection = () => {
                 <pointLight position={[0, 10, -5]} color="#06B6D4" intensity={0.6} />
                 <spotLight position={[0, 0, 10]} angle={0.3} penumbra={1} intensity={0.5} />
                 
-                {/* Main 3D Programming Language Logos */}
-                <DetailedProgrammingLogos position={[0, 0, 0]} logoType="react" scale={1.2} />
-                <DetailedProgrammingLogos position={[-3, 0, 0]} logoType="javascript" scale={1.0} />
-                <DetailedProgrammingLogos position={[3, 0, 0]} logoType="python" scale={1.0} />
+                {/* Main Web Development Icons */}
+                <WebDevIcons position={[0, 0, 0]} iconType="browser" scale={1.2} />
+                <WebDevIcons position={[-3, 0, 0]} iconType="code" scale={1.0} />
+                <WebDevIcons position={[3, 0, 0]} iconType="database" scale={1.0} />
                 
-                {/* Background accent programming logos */}
-                <ProgrammingLogos position={[-5, 1, -2]} logoType="java" scale={0.8} />
-                <ProgrammingLogos position={[5, -1, -2]} logoType="nodejs" scale={0.8} />
-                <ProgrammingLogos position={[0, 2, -3]} logoType="html" scale={0.7} />
-                <ProgrammingLogos position={[-2, -2, -2]} logoType="css" scale={0.7} />
-                <ProgrammingLogos position={[2, 2, -2]} logoType="sql" scale={0.7} />
+                {/* Background accent web dev icons */}
+                <WebDevIcons position={[-5, 1, -2]} iconType="api" scale={0.8} />
+                <WebDevIcons position={[5, -1, -2]} iconType="mobile" scale={0.8} />
+                <WebDevIcons position={[0, 2, -3]} iconType="cloud" scale={0.7} />
+                <WebDevIcons position={[-2, -2, -2]} iconType="git" scale={0.7} />
+                <WebDevIcons position={[2, 2, -2]} iconType="terminal" scale={0.7} />
                 
                 <OrbitControls 
                   enableZoom={false} 
@@ -235,10 +236,10 @@ const HeroSection = () => {
                 <directionalLight position={[5, 5, 5]} intensity={0.8} />
                 <pointLight position={[0, 0, 5]} color="#8B5CF6" intensity={0.6} />
                 
-                {/* Simplified 3D programming logos for mobile */}
-                <DetailedProgrammingLogos position={[0, 0, 0]} logoType="react" scale={1.0} />
-                <ProgrammingLogos position={[-2, 0, 0]} logoType="javascript" scale={0.8} />
-                <ProgrammingLogos position={[2, 0, 0]} logoType="python" scale={0.8} />
+                {/* Simplified web dev icons for mobile */}
+                <WebDevIcons position={[0, 0, 0]} iconType="browser" scale={1.0} />
+                <WebDevIcons position={[-2, 0, 0]} iconType="code" scale={0.8} />
+                <WebDevIcons position={[2, 0, 0]} iconType="database" scale={0.8} />
                 
                 <OrbitControls 
                   enableZoom={false} 
