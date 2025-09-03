@@ -20,34 +20,40 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    // Optimize chunk splitting for better caching
+    // Simplified build config for Vercel compatibility
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks: (id) => {
           // Vendor chunks for better caching
-          'react-vendor': ['react', 'react-dom'],
-          'animation-vendor': ['framer-motion'],
-          'ui-vendor': ['lucide-react', '@radix-ui/react-slot'],
-          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-vendor';
+            }
+            if (id.includes('framer-motion')) {
+              return 'animation-vendor';
+            }
+            if (id.includes('three') || id.includes('@react-three')) {
+              return 'three-vendor';
+            }
+            if (id.includes('lucide-react') || id.includes('@radix-ui')) {
+              return 'ui-vendor';
+            }
+            return 'vendor';
+          }
         },
       },
     },
-    // Enable minification and compression
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: mode === 'production',
-        drop_debugger: mode === 'production',
-      },
-    },
-    // Optimize chunk size
-    chunkSizeWarningLimit: 1000,
+    // Vercel-compatible build settings
+    target: 'esnext',
+    minify: 'esbuild',
+    sourcemap: false,
+    chunkSizeWarningLimit: 1500,
   },
   // Enable CSS code splitting
   css: {
     devSourcemap: mode === 'development',
   },
-  // Optimize dependencies
+  // Optimize dependencies for Vercel
   optimizeDeps: {
     include: [
       'react',
@@ -55,5 +61,6 @@ export default defineConfig(({ mode }) => ({
       'framer-motion',
       'lucide-react',
     ],
+    exclude: ['@react-three/fiber', '@react-three/drei'],
   },
 }));
