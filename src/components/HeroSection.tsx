@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import ProgrammingLogos from './3D/ProgrammingLogos';
 import DetailedProgrammingLogos from './3D/DetailedProgrammingLogos';
 import WebDevIcons from './3D/WebDevIcons';
+import DeveloperTools from './3D/DeveloperTools';
 import TypingAnimation from './TypingAnimation';
 import ParticleBackground from './ParticleBackground';
 
@@ -199,17 +200,17 @@ const HeroSection = () => {
                 <pointLight position={[0, 10, -5]} color="#06B6D4" intensity={0.6} />
                 <spotLight position={[0, 0, 10]} angle={0.3} penumbra={1} intensity={0.5} />
                 
-                {/* Main Web Development Icons */}
-                <WebDevIcons position={[0, 0, 0]} iconType="browser" scale={1.2} />
-                <WebDevIcons position={[-3, 0, 0]} iconType="code" scale={1.0} />
-                <WebDevIcons position={[3, 0, 0]} iconType="database" scale={1.0} />
+                {/* Main Developer Tools */}
+                <DeveloperTools position={[0, 0, 0]} toolType="vscode" scale={1.2} />
+                <DeveloperTools position={[-3, 0, 0]} toolType="github" scale={1.0} />
+                <DeveloperTools position={[3, 0, 0]} toolType="docker" scale={1.0} />
                 
-                {/* Background accent web dev icons */}
-                <WebDevIcons position={[-5, 1, -2]} iconType="api" scale={0.8} />
-                <WebDevIcons position={[5, -1, -2]} iconType="mobile" scale={0.8} />
-                <WebDevIcons position={[0, 2, -3]} iconType="cloud" scale={0.7} />
-                <WebDevIcons position={[-2, -2, -2]} iconType="git" scale={0.7} />
-                <WebDevIcons position={[2, 2, -2]} iconType="terminal" scale={0.7} />
+                {/* Background accent developer tools */}
+                <DeveloperTools position={[-5, 1, -2]} toolType="npm" scale={0.8} />
+                <DeveloperTools position={[5, -1, -2]} toolType="webpack" scale={0.8} />
+                <DeveloperTools position={[0, 2, -3]} toolType="figma" scale={0.7} />
+                <DeveloperTools position={[-2, -2, -2]} toolType="postman" scale={0.7} />
+                <DeveloperTools position={[2, 2, -2]} toolType="slack" scale={0.7} />
                 
                 <OrbitControls 
                   enableZoom={false} 
@@ -236,10 +237,10 @@ const HeroSection = () => {
                 <directionalLight position={[5, 5, 5]} intensity={0.8} />
                 <pointLight position={[0, 0, 5]} color="#8B5CF6" intensity={0.6} />
                 
-                {/* Simplified web dev icons for mobile */}
-                <WebDevIcons position={[0, 0, 0]} iconType="browser" scale={1.0} />
-                <WebDevIcons position={[-2, 0, 0]} iconType="code" scale={0.8} />
-                <WebDevIcons position={[2, 0, 0]} iconType="database" scale={0.8} />
+                {/* Simplified developer tools for mobile */}
+                <DeveloperTools position={[0, 0, 0]} toolType="vscode" scale={1.0} />
+                <DeveloperTools position={[-2, 0, 0]} toolType="github" scale={0.8} />
+                <DeveloperTools position={[2, 0, 0]} toolType="docker" scale={0.8} />
                 
                 <OrbitControls 
                   enableZoom={false} 
