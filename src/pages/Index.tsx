@@ -1,21 +1,52 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import SkillsSection from '@/components/SkillsSection';
-import ProjectsSection from '@/components/ProjectsSection';
-import ContactSection from '@/components/ContactSection';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Menu, X } from 'lucide-react';
+
+// Import HeroSection directly (above the fold content)
+import HeroSection from '@/components/HeroSection';
+
+// Lazy load other components for better performance
+const AboutSection = lazy(() => import('@/components/AboutSection'));
+const SkillsSection = lazy(() => import('@/components/SkillsSection'));
+const ProjectsSection = lazy(() => import('@/components/ProjectsSection'));
+const ContactSection = lazy(() => import('@/components/ContactSection'));
+
+// Skeleton component for loading states
+const SectionSkeleton = () => (
+  <div className="py-12 sm:py-16 lg:py-20">
+    <div className="container mx-auto px-4">
+      <div className="max-w-6xl mx-auto animate-pulse">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="h-12 bg-muted rounded-lg mb-4 mx-auto w-64"></div>
+          <div className="w-20 h-1 bg-muted mx-auto"></div>
+        </div>
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
+          <div className="space-y-6">
+            <div className="h-64 bg-muted rounded-lg"></div>
+            <div className="h-32 bg-muted rounded-lg"></div>
+          </div>
+          <div className="space-y-6">
+            <div className="grid grid-cols-2 gap-4">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="h-32 bg-muted rounded-lg"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Simulate loading time
+    // Reduced loading time for better performance
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
@@ -30,14 +61,20 @@ const Index = () => {
 
   const scrollToSection = (sectionId: string) => {
     console.log('Scrolling to section:', sectionId); // Debug log
-    const element = document.getElementById(sectionId);
-    if (element) {
-      console.log('Element found:', element); // Debug log
-      element.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      console.log('Element not found for section:', sectionId); // Debug log
-    }
+    
+    // Close mobile menu first
     closeMobileMenu();
+    
+    // Small delay to ensure menu closes before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        console.log('Element found:', element); // Debug log
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        console.log('Element not found for section:', sectionId); // Debug log
+      }
+    }, 100);
   };
 
   const pageVariants = {
@@ -147,18 +184,33 @@ const Index = () => {
                 </div>
 
                 {/* Mobile Menu Button - ONLY visible on mobile */}
-                <motion.button
-                  className="md:hidden p-2 glass-card rounded-lg"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={toggleMobileMenu}
+                <button
+                  className="md:hidden p-3 glass-card rounded-lg touch-manipulation"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMobileMenu();
+                  }}
+                  onTouchEnd={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMobileMenu();
+                  }}
+                  type="button"
+                  aria-label="Toggle mobile menu"
+                  aria-expanded={isMobileMenuOpen}
+                  style={{ 
+                    WebkitTapHighlightColor: 'transparent',
+                    WebkitUserSelect: 'none',
+                    userSelect: 'none'
+                  }}
                 >
                   {isMobileMenuOpen ? (
                     <X className="w-6 h-6 text-foreground" />
                   ) : (
                     <Menu className="w-6 h-6 text-foreground" />
                   )}
-                </motion.button>
+                </button>
               </div>
             </div>
 
@@ -180,15 +232,29 @@ const Index = () => {
                       { label: "Projects", id: "projects" },
                       { label: "Contact", id: "contact" }
                     ].map((item) => (
-                      <motion.button
+                      <button
                         key={item.label}
-                        onClick={() => scrollToSection(item.id)}
-                        className="block w-full text-left text-muted-foreground hover:text-primary transition-colors py-2 px-3 rounded-lg hover:bg-glass/50 bg-transparent border-none cursor-pointer"
-                        whileHover={{ x: 5 }}
-                        whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          scrollToSection(item.id);
+                        }}
+                        onTouchEnd={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          scrollToSection(item.id);
+                        }}
+                        className="block w-full text-left text-muted-foreground hover:text-primary active:text-primary transition-colors py-4 px-4 rounded-lg hover:bg-glass/50 active:bg-glass/70 bg-transparent border-none cursor-pointer touch-manipulation min-h-[48px] text-base font-medium"
+                        type="button"
+                        aria-label={`Navigate to ${item.label} section`}
+                        style={{ 
+                          WebkitTapHighlightColor: 'transparent',
+                          WebkitUserSelect: 'none',
+                          userSelect: 'none'
+                        }}
                       >
                         {item.label}
-                      </motion.button>
+                      </button>
                     ))}
                   </div>
                 </motion.div>
@@ -203,19 +269,27 @@ const Index = () => {
             </section>
             
             <section id="about" className="min-h-screen">
-              <AboutSection />
+              <Suspense fallback={<SectionSkeleton />}>
+                <AboutSection />
+              </Suspense>
             </section>
             
             <section id="skills" className="min-h-screen">
-              <SkillsSection />
+              <Suspense fallback={<SectionSkeleton />}>
+                <SkillsSection />
+              </Suspense>
             </section>
             
             <section id="projects" className="min-h-screen">
-              <ProjectsSection />
+              <Suspense fallback={<SectionSkeleton />}>
+                <ProjectsSection />
+              </Suspense>
             </section>
             
             <section id="contact" className="min-h-screen">
-              <ContactSection />
+              <Suspense fallback={<SectionSkeleton />}>
+                <ContactSection />
+              </Suspense>
             </section>
           </main>
 

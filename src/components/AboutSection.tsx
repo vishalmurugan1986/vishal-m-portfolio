@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import { Code, Palette, Rocket, Users } from 'lucide-react';
 
 const AboutSection = () => {
@@ -27,12 +27,12 @@ const AboutSection = () => {
     }
   };
 
-  const stats = [
+  const stats = useMemo(() => [
     { number: "10+", label: "Projects Completed", icon: Code },
     { number: "1+", label: "Years Experience", icon: Rocket },
     { number: "20+", label: "Happy Clients", icon: Users },
     { number: "5+", label: "Technologies", icon: Palette }
-  ];
+  ], []);
 
   return (
     <section id="about" className="py-12 sm:py-16 lg:py-20 relative">
