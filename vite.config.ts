@@ -20,47 +20,23 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    // Simplified build config for Vercel compatibility
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    minify: 'esbuild',
+    target: 'es2015',
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          // Vendor chunks for better caching
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor';
-            }
-            if (id.includes('framer-motion')) {
-              return 'animation-vendor';
-            }
-            if (id.includes('three') || id.includes('@react-three')) {
-              return 'three-vendor';
-            }
-            if (id.includes('lucide-react') || id.includes('@radix-ui')) {
-              return 'ui-vendor';
-            }
-            return 'vendor';
-          }
-        },
-      },
-    },
-    // Vercel-compatible build settings
-    target: 'esnext',
-    minify: 'esbuild',
-    sourcemap: false,
-    chunkSizeWarningLimit: 1500,
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          animations: ['framer-motion'],
+          three: ['three', '@react-three/fiber', '@react-three/drei'],
+          ui: ['lucide-react']
+        }
+      }
+    }
   },
-  // Enable CSS code splitting
-  css: {
-    devSourcemap: mode === 'development',
-  },
-  // Optimize dependencies for Vercel
   optimizeDeps: {
-    include: [
-      'react',
-      'react-dom',
-      'framer-motion',
-      'lucide-react',
-    ],
-    exclude: ['@react-three/fiber', '@react-three/drei'],
-  },
+    include: ['react', 'react-dom', 'framer-motion', 'lucide-react']
+  }
 }));
